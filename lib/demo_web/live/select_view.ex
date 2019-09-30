@@ -1,13 +1,16 @@
-defmodule DemoWeb.BarLive do
+defmodule DemoWeb.SelectLive do
   use Phoenix.LiveView
+  alias DemoWeb.SelectLive
+  alias DemoWeb.Router.Helpers, as: Routes
 
   def render(assigns) do
     ~L"""
-    <h2>Counter: <%= @counter %></h2>
-    <button phx-click="inc">Inc</button>
     <%= for index <- @items do %>
       <h3>Item #<%= index %></h3>
-      <div>
+      <%= live_link to: Routes.live_path(@socket, SelectLive, "#{index}") do %>
+        <button>Select</button>
+      <% end %>
+      <div style="<%= if @active == index, do: "color: red" %>">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -21,10 +24,15 @@ defmodule DemoWeb.BarLive do
   end
 
   def mount(_session, socket) do
-    {:ok, socket |> assign(:counter, 0) |> assign(:items, 1..50)}
+    socket =
+      socket
+      |> assign(:active, nil)
+      |> assign(:items, 1..50)
+
+    {:ok, socket}
   end
 
-  def handle_event("inc", _, socket) do
-    {:noreply, update(socket, :counter, &(&1 + 1))}
+  def handle_params(%{"active" => active_str}, _, socket) do
+    {:noreply, socket |> assign(:active, Integer.parse(active_str) |> elem(0))}
   end
 end
