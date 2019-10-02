@@ -15,7 +15,7 @@ defmodule DemoWeb.HelpersLive do
   def render(assigns) do
     ~L"""
     <button phx-click="inc">Inc</button>
-    <%= hero title: "Counter" do %>
+    <%= hero title: "Counter #{@counter}" do %>
       <div><%= @counter %></div>
       <div>Some static content...</div>
       <div>

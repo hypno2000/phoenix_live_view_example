@@ -35,6 +35,7 @@ defmodule DemoWeb.Router do
     live "/bar", BarLive
     live "/select/:active", SelectLive
     live "/helpers", HelpersLive
+    live "/components", ComponentLive
 
     live "/users/page/:page", UserLive.Index
     live "/users", UserLive.Index
