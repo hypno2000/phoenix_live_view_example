@@ -1,24 +1,24 @@
-defmodule DemoWeb.HeroLive do
+defmodule DemoWeb.ComponentBlocksHeroLive do
   use Phoenix.LiveComponent
 
-  def render(assigns = %{do: do_block}) do
+  def render(assigns) do
     # <h2><%= @title %></h2>
     ~L"""
     <section class="phx-hero">
       <h2><%= @title %></h2>
-      <%= do_block %>
+      <%= @inner_content.([]) %>
     </section>
     """
   end
 end
 
-defmodule DemoWeb.ComponentLive do
+defmodule DemoWeb.ComponentBlocksLive do
   use Phoenix.LiveView
 
   def render(assigns) do
     ~L"""
     <button phx-click="inc">Inc</button>
-    <%= live_component @socket, DemoWeb.HeroLive, title: "Counter" do %>
+    <%= live_component @socket, DemoWeb.ComponentBlocksHeroLive, title: "Counter" do %>
       <div><%= @counter %></div>
       <div>Some static content...</div>
       <div>
