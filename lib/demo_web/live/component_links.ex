@@ -89,7 +89,7 @@ defmodule DemoWeb.ComponentLinks2Live do
 
   def render(assigns) do
     ~L"""
-    <h1>LiveView #1</h1>
+    <h1>LiveView #2</h1>
     <%= live_link to: Routes.live_path(@socket, DemoWeb.ComponentLinksLive, ["hello", "from", "live-view"]) do %>
       Link in live view #1
     <% end %>
