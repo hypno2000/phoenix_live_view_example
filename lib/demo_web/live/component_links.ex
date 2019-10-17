@@ -3,7 +3,6 @@ defmodule DemoWeb.ComponentLinksHeroLive do
   alias DemoWeb.Router.Helpers, as: Routes
 
   def render(assigns) do
-    # <h2><%= @title %></h2>
     ~L"""
     <section class="phx-hero">
       <h2><%= @title %></h2>
