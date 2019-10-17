@@ -64,7 +64,7 @@ defmodule DemoWeb.ComponentLinksLive do
     {:noreply, update(socket, :counter, &(&1 + 1))}
   end
 
-  def handle_params(%{"path" => path}, uri, socket) do
+  def handle_params(%{"path" => path}, _, socket) do
     {:noreply, socket |> assign(:path, path)}
   end
 end
