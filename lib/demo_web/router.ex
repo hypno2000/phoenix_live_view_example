@@ -38,6 +38,7 @@ defmodule DemoWeb.Router do
     live "/component_blocks", ComponentBlocksLive
     live "/component_events", ComponentEventsLive
     live "/component_links/*path", ComponentLinksLive
+    live "/component_links2/*path", ComponentLinks2Live
 
     live "/users/page/:page", UserLive.Index
     live "/users", UserLive.Index
