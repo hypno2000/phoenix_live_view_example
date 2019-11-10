@@ -7,6 +7,7 @@ let Hooks = {}
 
 Hooks.PhoneNumber = {
   mounted(){
+    console.log("PhoneNumber mounted", this.el)
     let pattern = /^(\d{3})(\d{3})(\d{4})$/
     this.el.addEventListener("input", e => {
       let match = this.el.value.replace(/\D/g, "").match(pattern)
@@ -14,6 +15,12 @@ Hooks.PhoneNumber = {
         this.el.value = `${match[1]}-${match[2]}-${match[3]}`
       }
     })
+  },
+  updated(){
+    console.log("PhoneNumber updated", this.el)
+  },
+  destroyed(){
+    console.log("PhoneNumber destroyed", this.el)
   }
 }
 
